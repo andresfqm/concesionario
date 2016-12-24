@@ -1,0 +1,60 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </h:head>
+    <body>
+        <h:form>
+            <p:messages id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
+
+            <p:fieldset legend="Registro Vehiculos" >
+                <h:panelGrid columns="3" id="VDatos">
+                    <p:outputLabel for="txtCodigo" value="Codigo del vehiculo" />
+                    <p:inputText id="txtCodigo" value="#{vehiculoController.vehiculo.codigoVehiculo}" required="true" />
+                    <p:message for="txtCodigo" />
+
+                    <p:outputLabel for="txtMarca" value="Marca" />
+                    <p:inputText id="txtMarca" value="#{vehiculoController.vehiculo.marca}" required="true"/>
+                    <p:message for="txtMarca" />
+
+                    <p:outputLabel for="txtModelo" value="Modelo" />
+                    <p:inputText id="txtModelo" value="#{vehiculoController.vehiculo.modelo}" required="true"/>
+                    <p:message for="txtModelo" />
+
+                    <p:outputLabel for="txtPrecio" value="Precio" />
+                    <p:inputText id="txtPrecio" value="#{vehiculoController.vehiculo.precio}" required="true"/>
+                    <p:message for="txtPrecio" />
+                    
+                 
+                    
+                     <p:outputLabel  value="Concesionario" />
+                     <p:selectOneMenu  value="#{vehiculoController.concesionario.nit}" filter="true" filterMatchMode="contains">
+                         <f:selectItems value="#{concesionarioController.consecionarios}" var="con" itemLabel="#{con.nombre}" 
+                                           itemValue="#{con.nit}"/>
+                        <p:inputText id="codigoC" value="#{vehiculoController.vehiculo.codigoConcesionario}" required="true"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                
+                 
+                        
+                
+
+                <p:commandButton icon="ui-icon-check" value="Registrar" update="VDatos, mensaje" actionListener="#{vehiculoController.registrarVehiculo()}" />
+
+            </p:fieldset>
+
+        </h:form>
+
+    </body>
+
+</html>

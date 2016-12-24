@@ -1,0 +1,47 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </h:head>
+    <body>
+        <h:form>
+            <p:messages id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
+
+            <p:fieldset legend="Registro Concesionarios" >
+                <h:panelGrid columns="3" id="pDatos">
+                    <p:outputLabel for="txtNit" value="Nit" />
+                    <p:inputText id="txtNit" value="#{concesionarioController.concesionario.nit}" required="true" />
+                    <p:message for="txtNit" />
+
+                    <p:outputLabel for="txtNombre" value="Nombre" />
+                    <p:inputText id="txtNombre" value="#{concesionarioController.concesionario.nombre}" required="true"/>
+                    <p:message for="txtNombre" />
+
+                    <p:outputLabel for="txtTelefono" value="Telefono" />
+                    <p:inputText id="txtTelefono" value="#{concesionarioController.concesionario.telefono}" required="true"/>
+                    <p:message for="txtTelefono" />
+
+                    <p:outputLabel for="txtDireccion" value="Dirección" />
+                    <p:inputText id="txtDireccion" value="#{concesionarioController.concesionario.direccion}" required="true"/>
+                    <p:message for="txtDireccion" />
+                    </h:panelGrid>
+
+                <p:commandButton icon="ui-icon-check" value="Registrar" update="pDatos, mensaje" actionListener="#{concesionarioController.registrarConcesionario()}" />
+
+            </p:fieldset>
+
+        </h:form>
+
+    </body>
+
+</html>

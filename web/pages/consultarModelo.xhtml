@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+
+
+        <h:form id="MostrarDatosVehiculos">
+            <h:messages errorClass="errors" showDetail="true" 
+                        showSummary="true" warnStyle="color:blue" 
+                        infoStyle="color:green" errorStyle="color:red"/>
+            <p:dataTable  id="TablaMostrarVehiculos"
+                          var="car" emptyMessage="No hay datos de vehiculos"
+                          value="#{vehiculoController.listarVehiculos()}" style="margin-bottom:40px">
+
+                <f:facet name="header">
+                    Single Column Sort
+                </f:facet>
+                <p:column headerText="Id" filterBy="#{car.codigoVehiculo}" sortBy="#{car.codigoVehiculo}">
+                    <h:outputText value="#{car.codigoVehiculo}" />
+                </p:column>
+
+                <p:column headerText="Marca" filterBy="#{car.marca}" sortBy="#{car.marca}">
+                    <h:outputText value="#{car.marca}" />
+                </p:column>
+
+                <p:column headerText="Modelo" filterBy="#{car.modelo}" sortBy="#{car.modelo}">
+                    <h:outputText value="#{car.modelo}" />
+                </p:column>
+                
+                <p:column headerText="Precio" filterBy="#{car.precio}" sortBy="#{car.precio}">
+                    <h:outputText value="#{car.precio}" />
+                </p:column>
+           
+            </p:dataTable>
+              <h:commandLink>
+                    <h:graphicImage url="./../resources/images/pdf.png"/>
+                    <p:dataExporter type="pdf" target="TablaMostrarVehiculos" fileName="PDF Vehiculos"/>
+                </h:commandLink>
+            
+            <h:commandLink>
+                    <h:graphicImage url="./../resources/images/xls.png"/>
+                    <p:dataExporter type="xls" target="TablaMostrarVehiculos" fileName="EXCEL Vehiculos"/>
+                </h:commandLink>
+            
+        </h:form>
+
+
+    </h:body>
+</html>
